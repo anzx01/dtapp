@@ -80,6 +80,12 @@ const valuationOptions: Array<{ value: ValuationState; label: string }> = [
 const plan = computed(() => store.plan);
 const productName = computed(() => plan.value?.investment_products[0]?.name || "未选择");
 
+type UniInputEvent = Event & {
+  detail?: {
+    value?: string | number;
+  };
+};
+
 onLoad(() => {
   store.hydrate();
   if (!store.plan) {
@@ -117,6 +123,10 @@ function back(): void {
 }
 
 function getInputValue(event: Event): string {
+  const detailValue = (event as UniInputEvent).detail?.value;
+  if (detailValue !== undefined && detailValue !== null) {
+    return String(detailValue);
+  }
   const target = event.target as HTMLInputElement;
   return target?.value ?? "";
 }

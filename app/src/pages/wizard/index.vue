@@ -340,6 +340,12 @@ type UniSwitchEvent = Event & {
   };
 };
 
+type UniInputEvent = Event & {
+  detail?: {
+    value?: string | number;
+  };
+};
+
 onLoad((query) => {
   store.hydrate();
   if (query?.edit === "1") {
@@ -485,6 +491,10 @@ function back(): void {
 }
 
 function getInputValue(event: Event): string {
+  const detailValue = (event as UniInputEvent).detail?.value;
+  if (detailValue !== undefined && detailValue !== null) {
+    return String(detailValue);
+  }
   const target = event.target as HTMLInputElement;
   return target?.value ?? "";
 }
