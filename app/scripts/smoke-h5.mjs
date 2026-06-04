@@ -21,6 +21,8 @@ await page.reload({ waitUntil: "networkidle" });
 
 await page.getByText("开始设置").click();
 await page.getByText("下一步").click();
+await page.locator("uni-input").nth(0).locator("input").fill("5000");
+await page.locator("uni-input").nth(1).locator("input").fill("100000");
 await page.getByText("下一步").click();
 await page.getByText("下一步").click();
 await page.getByText("下一步").click();
