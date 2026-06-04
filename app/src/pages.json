@@ -1,0 +1,40 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "定投计划"
+      }
+    },
+    {
+      "path": "pages/wizard/index",
+      "style": {
+        "navigationBarTitleText": "创建计划"
+      }
+    },
+    {
+      "path": "pages/plan-detail/index",
+      "style": {
+        "navigationBarTitleText": "计划详情"
+      }
+    },
+    {
+      "path": "pages/record/index",
+      "style": {
+        "navigationBarTitleText": "记录定投"
+      }
+    },
+    {
+      "path": "pages/review/index",
+      "style": {
+        "navigationBarTitleText": "复盘优化"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "定投计划",
+    "navigationBarBackgroundColor": "#F6F2E9",
+    "backgroundColor": "#F6F2E9"
+  }
+}

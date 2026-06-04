@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:Document xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns:svg="http://www.w3.org/2000/svg" p:version="3.1.0">
+  <p:Properties>
+    <p:Property name="name">定投计划设置向导</p:Property>
+  </p:Properties>
+  <p:Pages>
+    <p:Page id="page-main" p:name="移动端主流程线框" p:width="1800" p:height="2860">
+      <p:Properties>
+        <p:Property name="name">移动端主流程线框</p:Property>
+        <p:Property name="width">1800</p:Property>
+        <p:Property name="height">2860</p:Property>
+        <p:Property name="backgroundColor">#F4F1EA</p:Property>
+      </p:Properties>
+      <p:Content>
+        <svg:g id="dt-plan-wireframe">
+<svg:rect x="0" y="0" width="1800" height="2860" rx="0" fill="#F4F1EA" stroke="none" stroke-width="1"/>
+<svg:text x="55" y="54" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="28" font-weight="900" letter-spacing="0">定投计划设置向导 · Pencil 线框稿</svg:text>
+<svg:text x="55" y="84" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="400" letter-spacing="0">依据：定投计划设置向导_PRD.md · V1.0 目标：3 分钟完成计划，确认后进入执行/记录/复盘闭环</svg:text>
+<svg:rect x="1290" y="34" width="455" height="50" rx="8" fill="#FDFCF8" stroke="#D9D5CA" stroke-width="1"/>
+<svg:text x="1310" y="64" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">设计原则：默认简单 · 规则先行 · 长期导向 · 可记录可复盘</svg:text>
+<svg:text x="55" y="98" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">1. 新手引导</svg:text>
+<svg:rect x="55" y="120" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="64" y="129" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="86" y="180" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="372" y="168" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="400" y="171" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="86" y="217" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="251.5" y="213" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">新手引导</svg:text>
+
+<svg:g transform="translate(83, 250)"><svg:rect x="0" y="0" width="319" height="86" rx="8" fill="#EEF5EB" stroke="none" stroke-width="1"/>
+<svg:text x="18" y="34" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="18" font-weight="800" letter-spacing="0">先设规则，再开始执行</svg:text>
+<svg:text x="18" y="61" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">3 分钟生成一份可提醒、可记录、可复盘的定投计划</svg:text>
+<svg:text x="0" y="128" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">只需几步，创建你的定投计划</svg:text>
+<svg:text x="0" y="156" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">默认值可以直接使用，高级项后续再改。</svg:text>
+<svg:text x="0" y="175" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">不做交易撮合，只帮你执行计划。</svg:text>
+<svg:circle cx="20" cy="267" r="15" fill="#2F7D52"/>
+<svg:text x="20" y="272" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="0">1</svg:text>
+<svg:text x="48" y="264" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">确定目标</svg:text>
+<svg:text x="48" y="287" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">养老、教育金、长期增值</svg:text>
+<svg:circle cx="20" cy="337" r="15" fill="#E7EAE2"/>
+<svg:text x="20" y="342" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="0">2</svg:text>
+<svg:text x="48" y="334" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">设置预算</svg:text>
+<svg:text x="48" y="357" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">只用闲钱，不影响生活</svg:text>
+<svg:circle cx="20" cy="407" r="15" fill="#E7EAE2"/>
+<svg:text x="20" y="412" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="0">3</svg:text>
+<svg:text x="48" y="404" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">定义规则</svg:text>
+<svg:text x="48" y="427" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">低估多投，高估少投</svg:text>
+<svg:rect x="0" y="557" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="586" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">开始设置</svg:text>
+<svg:text x="84" y="646" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">查看示例</svg:text>
+<svg:text x="235" y="646" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">跳过</svg:text></svg:g>
+<svg:line x1="194" y1="910" x2="291" y2="910" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="500" y="98" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">2. 目标设置</svg:text>
+<svg:rect x="500" y="120" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="509" y="129" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="531" y="180" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="817" y="168" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="845" y="171" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="531" y="217" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="696.5" y="213" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">目标设置</svg:text>
+<svg:rect x="617" y="233" width="160" height="6" rx="3" fill="#E5E7E1" stroke="none" stroke-width="1"/>
+<svg:rect x="617" y="233" width="23" height="6" rx="3" fill="#2F7D52" stroke="none" stroke-width="1"/>
+<svg:text x="791" y="242" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">1/7</svg:text>
+<svg:g transform="translate(528, 250)"><svg:text x="0" y="0" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">你这次定投，是为了什么？</svg:text>
+<svg:text x="0" y="28" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">不同目标会影响默认期限和卖出方式。</svg:text>
+<svg:rect x="0" y="86" width="151" height="78" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="114" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">长期增值</svg:text>
+<svg:text x="16" y="138" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">5 年以上更适合</svg:text>
+
+<svg:rect x="168" y="86" width="151" height="78" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="184" y="114" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">养老准备</svg:text>
+<svg:text x="184" y="138" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">偏稳健与现金流</svg:text>
+
+<svg:rect x="0" y="180" width="151" height="78" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="208" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">教育金</svg:text>
+<svg:text x="16" y="232" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">关注用钱时间</svg:text>
+
+<svg:rect x="168" y="180" width="151" height="78" rx="8" fill="#EEF5EB" stroke="#2F7D52" stroke-width="1.5"/>
+<svg:text x="184" y="208" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">财务自由</svg:text>
+<svg:text x="184" y="232" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">长期持有优先</svg:text>
+<svg:circle cx="297" cy="202" r="10" fill="#2F7D52"/>
+<svg:text x="297" y="207" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">✓</svg:text>
+<svg:text x="0" y="302" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">目标期限</svg:text>
+<svg:rect x="0" y="326" width="76" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="38" y="347" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">3 年内</svg:text>
+<svg:rect x="86" y="326" width="74" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="123" y="347" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">3-5 年</svg:text>
+<svg:rect x="170" y="326" width="82" height="32" rx="16" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="211" y="347" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">5 年以上</svg:text>
+<svg:rect x="262" y="326" width="57" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="290.5" y="347" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">未定</svg:text>
+<svg:text x="0" y="395" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">目标描述（可选）</svg:text>
+<svg:rect x="0" y="417" width="319" height="78" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="14" y="447" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">例如：10 年后覆盖家庭月支出</svg:text>
+<svg:rect x="0" y="525" width="319" height="54" rx="8" fill="#EEF5EB" stroke="none" stroke-width="1"/>
+<svg:text x="14" y="548" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">系统建议：默认采用长期持有 + 估值止盈提示</svg:text>
+<svg:rect x="0" y="617" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="646" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">下一步</svg:text>
+</svg:g>
+<svg:line x1="639" y1="910" x2="736" y2="910" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="945" y="98" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">3. 月度预算</svg:text>
+<svg:rect x="945" y="120" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="954" y="129" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="976" y="180" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="1262" y="168" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="1290" y="171" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="976" y="217" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="1141.5" y="213" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">月度预算</svg:text>
+<svg:rect x="1062" y="233" width="160" height="6" rx="3" fill="#E5E7E1" stroke="none" stroke-width="1"/>
+<svg:rect x="1062" y="233" width="46" height="6" rx="3" fill="#2F7D52" stroke="none" stroke-width="1"/>
+<svg:text x="1236" y="242" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">2/7</svg:text>
+<svg:g transform="translate(973, 250)"><svg:text x="0" y="0" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">你每月准备投多少钱？</svg:text>
+<svg:text x="0" y="28" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">这笔钱最好 3 年内不会用到。</svg:text>
+<svg:text x="0" y="86" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">每月定投金额</svg:text>
+<svg:rect x="0" y="110" width="319" height="58" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="147" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="24" font-weight="800" letter-spacing="0">¥ 3,000</svg:text>
+<svg:text x="0" y="205" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">每月可支配结余（可选）</svg:text>
+<svg:rect x="0" y="229" width="319" height="48" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="260" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="18" font-weight="700" letter-spacing="0">¥ 8,000</svg:text>
+<svg:rect x="0" y="312" width="319" height="48" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="342" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="700" letter-spacing="0">已预留备用金</svg:text>
+<svg:rect x="258" y="325" width="44" height="22" rx="11" fill="#2F7D52" stroke="none" stroke-width="1"/>
+<svg:circle cx="288" cy="336" r="9" fill="#FFFFFF"/>
+<svg:rect x="0" y="376" width="319" height="48" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="406" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="700" letter-spacing="0">未来 3 年有大额支出</svg:text>
+<svg:rect x="258" y="389" width="44" height="22" rx="11" fill="#DCDDD8" stroke="none" stroke-width="1"/>
+<svg:circle cx="272" cy="400" r="9" fill="#FFFFFF"/>
+<svg:rect x="0" y="464" width="319" height="76" rx="8" fill="#FFF9EF" stroke="#E4C98C" stroke-width="1"/>
+<svg:text x="14" y="490" fill="#8A6222" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" letter-spacing="0">风险提示</svg:text>
+<svg:text x="14" y="514" fill="#8A6222" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">当前金额约为结余 37.5%。</svg:text>
+<svg:text x="14" y="532" fill="#8A6222" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">建议先从结余的一部分开始。</svg:text>
+<svg:rect x="0" y="617" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="646" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">下一步</svg:text>
+</svg:g>
+<svg:line x1="1084" y1="910" x2="1181" y2="910" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="1390" y="98" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">4. 品种选择</svg:text>
+<svg:rect x="1390" y="120" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="1399" y="129" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="1421" y="180" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="1707" y="168" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="1735" y="171" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="1421" y="217" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="1586.5" y="213" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">品种选择</svg:text>
+<svg:rect x="1507" y="233" width="160" height="6" rx="3" fill="#E5E7E1" stroke="none" stroke-width="1"/>
+<svg:rect x="1507" y="233" width="69" height="6" rx="3" fill="#2F7D52" stroke="none" stroke-width="1"/>
+<svg:text x="1681" y="242" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">3/7</svg:text>
+<svg:g transform="translate(1418, 250)"><svg:text x="0" y="0" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">你想投哪类长期资产？</svg:text>
+<svg:text x="0" y="28" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">先选长期更稳的品种，再开始定投。</svg:text>
+<svg:rect x="0" y="82" width="76" height="32" rx="16" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="38" y="103" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">宽基</svg:text>
+<svg:rect x="86" y="82" width="86" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="129" y="103" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">策略加权</svg:text>
+<svg:rect x="182" y="82" width="76" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="220" y="103" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">行业</svg:text>
+<svg:rect x="268" y="82" width="51" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="293.5" y="103" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">组合</svg:text>
+<svg:rect x="0" y="132" width="319" height="82" rx="8" fill="#EEF5EB" stroke="#2F7D52" stroke-width="1.5"/>
+<svg:text x="16" y="160" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">沪深300指数</svg:text>
+<svg:text x="16" y="184" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">推荐：覆盖主流大盘资产</svg:text>
+<svg:circle cx="297" cy="154" r="10" fill="#2F7D52"/>
+<svg:text x="297" y="159" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">✓</svg:text>
+<svg:rect x="0" y="228" width="319" height="82" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="256" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">中证500指数</svg:text>
+<svg:text x="16" y="280" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">可作为宽基补充</svg:text>
+
+<svg:rect x="0" y="324" width="319" height="82" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="352" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">红利低波指数</svg:text>
+<svg:text x="16" y="376" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">适合现金流偏好</svg:text>
+
+<svg:rect x="0" y="444" width="319" height="102" rx="8" fill="#EEF5EB" stroke="none" stroke-width="1"/>
+<svg:text x="14" y="470" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="800" letter-spacing="0">推荐理由</svg:text>
+<svg:text x="14" y="497" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">宽基指数成分更分散，适合新手长期定投。</svg:text>
+<svg:text x="14" y="516" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">V1.0 建议少而精，先从 1 个品种开始。</svg:text>
+<svg:rect x="0" y="617" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="646" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">下一步</svg:text>
+</svg:g>
+<svg:line x1="1529" y1="910" x2="1626" y2="910" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="55" y="1020" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">5. 买入规则</svg:text>
+<svg:rect x="55" y="1042" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="64" y="1051" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="86" y="1102" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="372" y="1090" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="400" y="1093" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="86" y="1139" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="251.5" y="1135" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">买入规则</svg:text>
+<svg:rect x="172" y="1155" width="160" height="6" rx="3" fill="#E5E7E1" stroke="none" stroke-width="1"/>
+<svg:rect x="172" y="1155" width="91" height="6" rx="3" fill="#2F7D52" stroke="none" stroke-width="1"/>
+<svg:text x="346" y="1164" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">4/7</svg:text>
+<svg:g transform="translate(83, 1172)"><svg:text x="0" y="0" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">越便宜，买得越多</svg:text>
+<svg:text x="0" y="28" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">默认推荐定期不定额，降低临时决策。</svg:text>
+<svg:text x="0" y="86" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">买入方式</svg:text>
+<svg:rect x="0" y="112" width="78" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="39" y="133" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">固定</svg:text>
+<svg:rect x="88" y="112" width="98" height="32" rx="16" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="137" y="133" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">定期不定额</svg:text>
+<svg:rect x="196" y="112" width="76" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="234" y="133" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">估值</svg:text>
+<svg:rect x="282" y="112" width="37" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="300.5" y="133" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">自定</svg:text>
+<svg:rect x="0" y="180" width="319" height="258" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="210" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">估值区间</svg:text>
+<svg:text x="160" y="210" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">投入比例</svg:text>
+<svg:circle cx="30" cy="250" r="10" fill="#2F7D52"/>
+<svg:text x="50" y="255" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="800" letter-spacing="0">低估</svg:text>
+<svg:rect x="154" y="232" width="135" height="36" rx="8" fill="#F7F8F4" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="222" y="255" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">基础金额 × 1.5</svg:text>
+<svg:line x1="16" y1="286" x2="303" y2="286" stroke="#D4D8D0" stroke-width="1" stroke-linecap="round"/>
+<svg:circle cx="30" cy="318" r="10" fill="#355C7D"/>
+<svg:text x="50" y="323" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="800" letter-spacing="0">正常</svg:text>
+<svg:rect x="154" y="300" width="135" height="36" rx="8" fill="#F7F8F4" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="222" y="323" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">基础金额 × 1.0</svg:text>
+<svg:line x1="16" y1="354" x2="303" y2="354" stroke="#D4D8D0" stroke-width="1" stroke-linecap="round"/>
+<svg:circle cx="30" cy="386" r="10" fill="#B95E3B"/>
+<svg:text x="50" y="391" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="800" letter-spacing="0">高估</svg:text>
+<svg:rect x="154" y="368" width="135" height="36" rx="8" fill="#F7F8F4" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="222" y="391" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">暂停或 × 0.5</svg:text>
+<svg:line x1="16" y1="422" x2="303" y2="422" stroke="#D4D8D0" stroke-width="1" stroke-linecap="round"/>
+<svg:rect x="0" y="470" width="319" height="62" rx="8" fill="#FFF9EF" stroke="#E4C98C" stroke-width="1"/>
+<svg:text x="14" y="496" fill="#8A6222" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" letter-spacing="0">高级配置已折叠</svg:text>
+<svg:text x="14" y="518" fill="#8A6222" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">后续可调整每个区间的倍数。</svg:text>
+<svg:rect x="0" y="617" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="646" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">应用默认规则并继续</svg:text>
+</svg:g>
+<svg:line x1="194" y1="1832" x2="291" y2="1832" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="500" y="1020" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">6. 频率时间</svg:text>
+<svg:rect x="500" y="1042" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="509" y="1051" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="531" y="1102" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="817" y="1090" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="845" y="1093" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="531" y="1139" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="696.5" y="1135" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">频率时间</svg:text>
+<svg:rect x="617" y="1155" width="160" height="6" rx="3" fill="#E5E7E1" stroke="none" stroke-width="1"/>
+<svg:rect x="617" y="1155" width="114" height="6" rx="3" fill="#2F7D52" stroke="none" stroke-width="1"/>
+<svg:text x="791" y="1164" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">5/7</svg:text>
+<svg:g transform="translate(528, 1172)"><svg:text x="0" y="0" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">什么时候自动执行？</svg:text>
+<svg:text x="0" y="28" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">固定时间执行，更容易坚持。</svg:text>
+<svg:text x="0" y="86" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">定投频率</svg:text>
+<svg:rect x="0" y="112" width="74" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="37" y="133" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">每周</svg:text>
+<svg:rect x="84" y="112" width="74" height="32" rx="16" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="121" y="133" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">每月</svg:text>
+<svg:text x="0" y="176" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">执行时间点</svg:text>
+<svg:rect x="0" y="202" width="319" height="72" rx="8" fill="#EEF5EB" stroke="#2F7D52" stroke-width="1.5"/>
+<svg:text x="16" y="230" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">发工资后第一个交易日</svg:text>
+<svg:text x="16" y="254" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">默认推荐，减少犹豫</svg:text>
+<svg:circle cx="297" cy="224" r="10" fill="#2F7D52"/>
+<svg:text x="297" y="229" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">✓</svg:text>
+<svg:rect x="0" y="288" width="319" height="72" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="316" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">自定义日期</svg:text>
+<svg:text x="16" y="340" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">每月固定某一天</svg:text>
+
+<svg:rect x="0" y="396" width="319" height="108" rx="8" fill="#EEF5EB" stroke="none" stroke-width="1"/>
+<svg:text x="14" y="426" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" letter-spacing="0">下次执行时间</svg:text>
+<svg:text x="14" y="461" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">2026-06-05 09:30</svg:text>
+<svg:text x="14" y="488" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">系统会在当日上午提醒</svg:text>
+<svg:rect x="0" y="617" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="646" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">下一步</svg:text>
+</svg:g>
+<svg:line x1="639" y1="1832" x2="736" y2="1832" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="945" y="1020" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">7. 卖出规则</svg:text>
+<svg:rect x="945" y="1042" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="954" y="1051" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="976" y="1102" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="1262" y="1090" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="1290" y="1093" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="976" y="1139" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="1141.5" y="1135" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">卖出规则</svg:text>
+<svg:rect x="1062" y="1155" width="160" height="6" rx="3" fill="#E5E7E1" stroke="none" stroke-width="1"/>
+<svg:rect x="1062" y="1155" width="137" height="6" rx="3" fill="#2F7D52" stroke="none" stroke-width="1"/>
+<svg:text x="1236" y="1164" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">6/7</svg:text>
+<svg:g transform="translate(973, 1172)"><svg:text x="0" y="0" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">什么时候考虑卖出？</svg:text>
+<svg:text x="0" y="28" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">先定规则，再执行，不临时决定。</svg:text>
+<svg:rect x="0" y="86" width="319" height="72" rx="8" fill="#EEF5EB" stroke="#2F7D52" stroke-width="1.5"/>
+<svg:text x="16" y="114" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">长期持有</svg:text>
+<svg:text x="16" y="138" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">适合财务自由、现金流目标</svg:text>
+<svg:circle cx="297" cy="108" r="10" fill="#2F7D52"/>
+<svg:text x="297" y="113" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">✓</svg:text>
+<svg:rect x="0" y="172" width="319" height="72" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="200" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">估值止盈</svg:text>
+<svg:text x="16" y="224" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">高估时分批卖出</svg:text>
+
+<svg:rect x="0" y="258" width="319" height="72" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="286" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">收益率止盈</svg:text>
+<svg:text x="16" y="310" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">适合短期用钱场景</svg:text>
+
+<svg:text x="0" y="374" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">卖出后资金去向</svg:text>
+<svg:rect x="0" y="400" width="319" height="48" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="431" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="700" letter-spacing="0">保留现金，等待下一轮低估</svg:text>
+<svg:rect x="0" y="486" width="319" height="68" rx="8" fill="#EEF5EB" stroke="none" stroke-width="1"/>
+<svg:text x="14" y="512" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" letter-spacing="0">系统摘要</svg:text>
+<svg:text x="14" y="536" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">未触发卖出条件前，只执行买入规则。</svg:text>
+<svg:rect x="0" y="617" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="646" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">下一步</svg:text>
+</svg:g>
+<svg:line x1="1084" y1="1832" x2="1181" y2="1832" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="1390" y="1020" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">8. 提醒记录</svg:text>
+<svg:rect x="1390" y="1042" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="1399" y="1051" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="1421" y="1102" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="1707" y="1090" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="1735" y="1093" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="1421" y="1139" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="1586.5" y="1135" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">提醒记录</svg:text>
+<svg:rect x="1507" y="1155" width="160" height="6" rx="3" fill="#E5E7E1" stroke="none" stroke-width="1"/>
+<svg:rect x="1507" y="1155" width="160" height="6" rx="3" fill="#2F7D52" stroke="none" stroke-width="1"/>
+<svg:text x="1681" y="1164" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">7/7</svg:text>
+<svg:g transform="translate(1418, 1172)"><svg:text x="0" y="0" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">让系统帮你坚持下去</svg:text>
+<svg:text x="0" y="28" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">提醒为执行服务，记录为复盘服务。</svg:text>
+<svg:rect x="0" y="86" width="319" height="54" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="109" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="800" letter-spacing="0">定投提醒</svg:text>
+<svg:text x="16" y="128" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="11" font-weight="400" letter-spacing="0">每个执行日 08:30</svg:text>
+<svg:rect x="258" y="102" width="44" height="22" rx="11" fill="#2F7D52" stroke="none" stroke-width="1"/>
+<svg:circle cx="288" cy="113" r="9" fill="#FFFFFF"/>
+<svg:rect x="0" y="156" width="319" height="54" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="179" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="800" letter-spacing="0">估值提醒</svg:text>
+<svg:text x="16" y="198" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="11" font-weight="400" letter-spacing="0">进入低估/高估区间</svg:text>
+<svg:rect x="258" y="172" width="44" height="22" rx="11" fill="#2F7D52" stroke="none" stroke-width="1"/>
+<svg:circle cx="288" cy="183" r="9" fill="#FFFFFF"/>
+<svg:rect x="0" y="226" width="319" height="54" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="249" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="800" letter-spacing="0">月度复盘提醒</svg:text>
+<svg:text x="16" y="268" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="11" font-weight="400" letter-spacing="0">每月最后一个交易日</svg:text>
+<svg:rect x="258" y="242" width="44" height="22" rx="11" fill="#DCDDD8" stroke="none" stroke-width="1"/>
+<svg:circle cx="272" cy="253" r="9" fill="#FFFFFF"/>
+<svg:text x="0" y="334" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" letter-spacing="0">记录字段</svg:text>
+<svg:rect x="0" y="360" width="96" height="32" rx="16" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="48" y="381" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">日期</svg:text>
+<svg:rect x="106" y="360" width="96" height="32" rx="16" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="154" y="381" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">品种</svg:text>
+<svg:rect x="212" y="360" width="96" height="32" rx="16" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="260" y="381" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">买/卖</svg:text>
+<svg:rect x="0" y="402" width="96" height="32" rx="16" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="48" y="423" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">金额</svg:text>
+<svg:rect x="106" y="402" width="96" height="32" rx="16" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="154" y="423" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0">估值</svg:text>
+<svg:rect x="212" y="402" width="96" height="32" rx="16" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="260" y="423" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">备注</svg:text>
+<svg:rect x="0" y="482" width="319" height="64" rx="8" fill="#FFF9EF" stroke="#E4C98C" stroke-width="1"/>
+<svg:text x="14" y="508" fill="#8A6222" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" letter-spacing="0">合规提示</svg:text>
+<svg:text x="14" y="532" fill="#8A6222" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">提醒仅作策略参考，不构成投资建议。</svg:text>
+<svg:rect x="0" y="617" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="646" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">下一步</svg:text>
+</svg:g>
+<svg:line x1="1529" y1="1832" x2="1626" y2="1832" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="55" y="1942" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">9. 计划确认</svg:text>
+<svg:rect x="55" y="1964" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="64" y="1973" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="86" y="2024" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="372" y="2012" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="400" y="2015" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="86" y="2061" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="251.5" y="2057" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">计划确认</svg:text>
+
+<svg:g transform="translate(83, 2094)"><svg:text x="0" y="0" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">确认你的定投规则</svg:text>
+<svg:text x="0" y="28" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">不预测涨跌，只执行规则。</svg:text>
+<svg:rect x="0" y="74" width="319" height="386" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="106" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">目标</svg:text>
+<svg:text x="78" y="106" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">财务自由 · 5 年以上</svg:text>
+<svg:line x1="16" y1="130" x2="303" y2="130" stroke="#D4D8D0" stroke-width="1" stroke-linecap="round"/>
+<svg:text x="16" y="156" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">预算</svg:text>
+<svg:text x="78" y="156" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">每月 ¥3,000</svg:text>
+<svg:line x1="16" y1="180" x2="303" y2="180" stroke="#D4D8D0" stroke-width="1" stroke-linecap="round"/>
+<svg:text x="16" y="206" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">品种</svg:text>
+<svg:text x="78" y="206" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">沪深300指数</svg:text>
+<svg:line x1="16" y1="230" x2="303" y2="230" stroke="#D4D8D0" stroke-width="1" stroke-linecap="round"/>
+<svg:text x="16" y="256" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">买入</svg:text>
+<svg:text x="78" y="256" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">低估 1.5 倍，正常 1 倍，高估暂停</svg:text>
+<svg:line x1="16" y1="280" x2="303" y2="280" stroke="#D4D8D0" stroke-width="1" stroke-linecap="round"/>
+<svg:text x="16" y="306" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">频率</svg:text>
+<svg:text x="78" y="306" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">每月 · 发工资后第一个交易日</svg:text>
+<svg:line x1="16" y1="330" x2="303" y2="330" stroke="#D4D8D0" stroke-width="1" stroke-linecap="round"/>
+<svg:text x="16" y="356" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">卖出</svg:text>
+<svg:text x="78" y="356" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">长期持有，触发条件前不临时卖出</svg:text>
+<svg:line x1="16" y1="380" x2="303" y2="380" stroke="#D4D8D0" stroke-width="1" stroke-linecap="round"/>
+<svg:text x="16" y="406" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">提醒</svg:text>
+<svg:text x="78" y="406" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">执行提醒 + 估值提醒</svg:text>
+
+<svg:rect x="0" y="490" width="319" height="58" rx="8" fill="#EEF5EB" stroke="none" stroke-width="1"/>
+<svg:text x="14" y="516" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" letter-spacing="0">低估多投，高估少投。</svg:text>
+<svg:text x="14" y="538" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">不操作，也是一种纪律。</svg:text>
+<svg:rect x="0" y="600" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="629" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">创建计划</svg:text>
+<svg:text x="160" y="684" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" letter-spacing="0">返回修改</svg:text></svg:g>
+<svg:line x1="194" y1="2754" x2="291" y2="2754" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="500" y="1942" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">10. 计划详情</svg:text>
+<svg:rect x="500" y="1964" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="509" y="1973" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="531" y="2024" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="817" y="2012" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="845" y="2015" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="531" y="2061" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="696.5" y="2057" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">计划详情</svg:text>
+
+<svg:g transform="translate(528, 2094)"><svg:rect x="0" y="0" width="319" height="116" rx="8" fill="#17251E" stroke="none" stroke-width="1"/>
+<svg:text x="18" y="34" fill="#C7D4CA" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">今日建议动作</svg:text>
+<svg:text x="18" y="73" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="30" font-weight="900" letter-spacing="0">买入 ¥4,500</svg:text>
+<svg:text x="18" y="99" fill="#DDE6DE" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">沪深300 · 当前低估 · 基础金额 1.5 倍</svg:text>
+<svg:rect x="0" y="144" width="319" height="86" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="172" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">计划状态</svg:text>
+<svg:text x="16" y="202" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">进行中</svg:text>
+<svg:text x="170" y="172" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">下次执行</svg:text>
+<svg:text x="170" y="202" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">06-05</svg:text>
+<svg:rect x="0" y="254" width="319" height="132" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="282" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="800" letter-spacing="0">核心规则</svg:text>
+<svg:text x="16" y="314" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">月预算 ¥3,000 · 财务自由目标</svg:text>
+<svg:text x="16" y="338" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">低估 1.5 倍，正常 1 倍，高估暂停</svg:text>
+<svg:text x="16" y="362" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">卖出：长期持有，按规则复盘</svg:text>
+<svg:rect x="0" y="424" width="151" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="75.5" y="453" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">立即执行</svg:text>
+<svg:rect x="168" y="424" width="151" height="46" rx="8" fill="#FDFCF8" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="243.5" y="453" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">记录结果</svg:text>
+<svg:rect x="0" y="506" width="319" height="74" rx="8" fill="#EEF5EB" stroke="none" stroke-width="1"/>
+<svg:text x="14" y="532" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" letter-spacing="0">修改计划会影响后续执行</svg:text>
+<svg:text x="14" y="556" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">建议确认修改原因后再保存。</svg:text>
+<svg:text x="160" y="648" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" text-anchor="middle" letter-spacing="0">查看记录 · 查看复盘建议 · 修改计划</svg:text></svg:g>
+<svg:line x1="639" y1="2754" x2="736" y2="2754" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="945" y="1942" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">11. 记录定投</svg:text>
+<svg:rect x="945" y="1964" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="954" y="1973" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="976" y="2024" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="1262" y="2012" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="1290" y="2015" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="976" y="2061" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="1141.5" y="2057" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">记录定投</svg:text>
+
+<svg:g transform="translate(973, 2094)"><svg:text x="0" y="0" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">记录本次定投结果</svg:text>
+<svg:text x="0" y="28" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">记录不是负担，是复盘基础。</svg:text>
+<svg:text x="0" y="86" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">日期</svg:text>
+<svg:rect x="0" y="98" width="319" height="42" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="14" y="125" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="700" letter-spacing="0">2026-06-05</svg:text>
+<svg:text x="0" y="150" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">品种</svg:text>
+<svg:rect x="0" y="162" width="319" height="42" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="14" y="189" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="700" letter-spacing="0">沪深300指数</svg:text>
+<svg:text x="0" y="214" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">操作</svg:text>
+<svg:rect x="0" y="226" width="319" height="42" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="14" y="253" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="700" letter-spacing="0">买入</svg:text>
+<svg:text x="0" y="278" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">金额</svg:text>
+<svg:rect x="0" y="290" width="319" height="42" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="14" y="317" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="700" letter-spacing="0">¥4,500</svg:text>
+<svg:text x="0" y="342" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">估值状态</svg:text>
+<svg:rect x="0" y="354" width="319" height="42" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="14" y="381" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="14" font-weight="700" letter-spacing="0">低估</svg:text>
+<svg:text x="0" y="430" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">备注（可选）</svg:text>
+<svg:rect x="0" y="446" width="319" height="72" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="14" y="476" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">今天按计划执行</svg:text>
+<svg:rect x="0" y="590" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="619" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">保存记录</svg:text>
+<svg:text x="160" y="670" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" text-anchor="middle" letter-spacing="0">本工具不提供交易下单</svg:text></svg:g>
+<svg:line x1="1084" y1="2754" x2="1181" y2="2754" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:text x="1390" y="1942" fill="#17251E" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="800" letter-spacing="0">12. 复盘优化</svg:text>
+<svg:rect x="1390" y="1964" width="375" height="812" rx="28" fill="#17251E" stroke="#17251E" stroke-width="2"/>
+<svg:rect x="1399" y="1973" width="357" height="794" rx="22" fill="#FDFCF8" stroke="none" stroke-width="1"/>
+<svg:text x="1421" y="2024" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" letter-spacing="0">9:41</svg:text>
+<svg:rect x="1707" y="2012" width="26" height="10" rx="3" fill="none" stroke="#24302B" stroke-width="1"/>
+<svg:rect x="1735" y="2015" width="3" height="4" rx="1" fill="#24302B" stroke="none" stroke-width="1"/>
+<svg:text x="1421" y="2061" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="26" font-weight="700" letter-spacing="0">‹</svg:text>
+<svg:text x="1586.5" y="2057" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="0">复盘优化</svg:text>
+
+<svg:g transform="translate(1418, 2094)"><svg:text x="0" y="0" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="800" letter-spacing="0">月度复盘与优化</svg:text>
+<svg:text x="0" y="28" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="400" letter-spacing="0">复盘是为了更好地坚持。</svg:text>
+<svg:rect x="0" y="86" width="319" height="82" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:text x="16" y="116" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">本月执行率</svg:text>
+<svg:text x="16" y="148" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="28" font-weight="900" letter-spacing="0">100%</svg:text>
+<svg:text x="170" y="116" fill="#70756F" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">计划修改</svg:text>
+<svg:text x="170" y="148" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="28" font-weight="900" letter-spacing="0">0 次</svg:text>
+<svg:text x="0" y="210" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="800" letter-spacing="0">复盘清单</svg:text>
+<svg:rect x="0" y="238" width="319" height="36" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:circle cx="19" cy="256" r="9" fill="#2F7D52"/>
+<svg:text x="19" y="261" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0">✓</svg:text>
+<svg:text x="42" y="261" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">是否按计划执行</svg:text>
+<svg:rect x="0" y="286" width="319" height="36" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:circle cx="19" cy="304" r="9" fill="#2F7D52"/>
+<svg:text x="19" y="309" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0">✓</svg:text>
+<svg:text x="42" y="309" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">是否错过定投</svg:text>
+<svg:rect x="0" y="334" width="319" height="36" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:circle cx="19" cy="352" r="9" fill="#2F7D52"/>
+<svg:text x="19" y="357" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0">✓</svg:text>
+<svg:text x="42" y="357" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">预算是否仍然可承受</svg:text>
+<svg:rect x="0" y="382" width="319" height="36" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:circle cx="19" cy="400" r="9" fill="#2F7D52"/>
+<svg:text x="19" y="405" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0">✓</svg:text>
+<svg:text x="42" y="405" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">品种是否仍然合适</svg:text>
+<svg:rect x="0" y="430" width="319" height="36" rx="8" fill="#FFFFFF" stroke="#D4D8D0" stroke-width="1"/>
+<svg:circle cx="19" cy="448" r="9" fill="#DCDDD8"/>
+<svg:text x="19" y="453" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0"/>
+<svg:text x="42" y="453" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="0">是否达到卖出条件</svg:text>
+<svg:rect x="0" y="510" width="319" height="58" rx="8" fill="#EEF5EB" stroke="none" stroke-width="1"/>
+<svg:text x="14" y="536" fill="#2F7D52" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="800" letter-spacing="0">优化建议</svg:text>
+<svg:text x="14" y="558" fill="#24302B" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="400" letter-spacing="0">继续当前预算；暂不增加品种数量。</svg:text>
+<svg:rect x="0" y="610" width="319" height="46" rx="8" fill="#2F7D52" stroke="#2F7D52" stroke-width="1"/>
+<svg:text x="159.5" y="639" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, PingFang SC, sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="0">保存复盘</svg:text></svg:g>
+<svg:line x1="1529" y1="2754" x2="1626" y2="2754" stroke="#BFC6BD" stroke-width="4" stroke-linecap="round"/>
+<svg:line x1="440" y1="526" x2="465" y2="526" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="465" y1="526" x2="465" y2="526" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="465" y1="526" x2="490" y2="526" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 482 521 L 490 526 L 482 531" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg:line x1="885" y1="526" x2="910" y2="526" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="910" y1="526" x2="910" y2="526" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="910" y1="526" x2="935" y2="526" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 927 521 L 935 526 L 927 531" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg:line x1="1330" y1="526" x2="1355" y2="526" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="1355" y1="526" x2="1355" y2="526" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="1355" y1="526" x2="1380" y2="526" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 1372 521 L 1380 526 L 1372 531" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg:line x1="1775" y1="526" x2="910" y2="526" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="910" y1="526" x2="910" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="910" y1="1448" x2="45" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 37 1443 L 45 1448 L 37 1453" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg:line x1="440" y1="1448" x2="465" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="465" y1="1448" x2="465" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="465" y1="1448" x2="490" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 482 1443 L 490 1448 L 482 1453" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg:line x1="885" y1="1448" x2="910" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="910" y1="1448" x2="910" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="910" y1="1448" x2="935" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 927 1443 L 935 1448 L 927 1453" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg:line x1="1330" y1="1448" x2="1355" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="1355" y1="1448" x2="1355" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="1355" y1="1448" x2="1380" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 1372 1443 L 1380 1448 L 1372 1453" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg:line x1="1775" y1="1448" x2="910" y2="1448" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="910" y1="1448" x2="910" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="910" y1="2370" x2="45" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 37 2365 L 45 2370 L 37 2375" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg:line x1="440" y1="2370" x2="465" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="465" y1="2370" x2="465" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="465" y1="2370" x2="490" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 482 2365 L 490 2370 L 482 2375" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg:line x1="885" y1="2370" x2="910" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="910" y1="2370" x2="910" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="910" y1="2370" x2="935" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 927 2365 L 935 2370 L 927 2375" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg:line x1="1330" y1="2370" x2="1355" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="1355" y1="2370" x2="1355" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:line x1="1355" y1="2370" x2="1380" y2="2370" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 6"/>
+<svg:path d="M 1372 2365 L 1380 2370 L 1372 2375" fill="none" stroke="#A7AEA4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg:g>
+      </p:Content>
+    </p:Page>
+  </p:Pages>
+</p:Document>
