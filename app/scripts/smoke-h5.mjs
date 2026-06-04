@@ -31,10 +31,13 @@ await page.getByText("下一步").click();
 await page.getByText("下一步").click();
 await page.locator("uni-page-body").getByText("创建计划").click();
 await page.getByText("当前建议动作").waitFor();
+await page.getByText("预计总收入").waitFor();
 await page.screenshot({ path: "artifacts/detail-390x844.png", fullPage: true });
 
 await page.getByText("立即执行 / 记录结果").click();
 await page.getByText("保存记录").click();
+await page.getByText("记录已保存").waitFor();
+await page.getByText("查看详情").click();
 await page.getByText("当前建议动作").waitFor();
 
 await page.getByText("查看复盘建议").click();

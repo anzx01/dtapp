@@ -33,6 +33,14 @@
             placeholder="目标描述（可选），例如：10 年后覆盖家庭月支出"
             @input="updateGoalDesc"
           />
+          <view class="field">
+            <text class="field-label">总收入测算年限</text>
+            <input class="text-input" type="number" :value="draft.projection_years" @input="updateProjectionYears" />
+          </view>
+          <view class="field">
+            <text class="field-label">目标总金额</text>
+            <input class="text-input amount" type="number" :value="draft.target_total_income" @input="updateTargetTotalIncome" />
+          </view>
           <view class="hint-box">
             <text>{{ goalHint }}</text>
           </view>
@@ -79,20 +87,47 @@
             </button>
           </view>
           <view class="option-grid">
-            <OptionCard
+            <view
               v-for="product in filteredProducts"
               :key="product.id"
-              :label="product.name"
-              :desc="product.reason"
-              :active="isProductSelected(product.id)"
-              @select="toggleProduct(product)"
-            />
+              class="index-card"
+              :class="{ active: isProductSelected(product.id) }"
+              @click="toggleProduct(product)"
+            >
+              <view class="index-head">
+                <view class="index-title-block">
+                  <text class="index-name">{{ product.name }}</text>
+                  <text class="index-meta">{{ product.market }} · {{ product.code }} · {{ riskLabels[product.risk_level] }}</text>
+                </view>
+                <view class="index-mark">{{ isProductSelected(product.id) ? "✓" : "" }}</view>
+              </view>
+              <text class="index-reason">{{ product.reason }}</text>
+              <view class="return-grid">
+                <view class="return-cell">
+                  <text>近10年</text>
+                  <text>{{ formatReturn(product.annualized_returns.y10) }}</text>
+                </view>
+                <view class="return-cell">
+                  <text>近20年</text>
+                  <text>{{ formatReturn(product.annualized_returns.y20) }}</text>
+                </view>
+                <view class="return-cell">
+                  <text>近30年</text>
+                  <text>{{ formatReturn(product.annualized_returns.y30) }}</text>
+                </view>
+              </view>
+              <view class="target-row">
+                <text>{{ draft.projection_years }} 年达成 ¥{{ formatMoney(draft.target_total_income) }}</text>
+                <text>{{ getRequiredMonthlyText(product) }}</text>
+              </view>
+              <text class="index-note">{{ product.return_note }}</text>
+            </view>
           </view>
           <view v-if="draft.investment_products.length === 0" class="hint-box danger">
             <text>请至少选择 1 个品种后继续。</text>
           </view>
           <view v-else class="hint-box">
-            <text>推荐少而精，V1.0 可先从宽基指数开始。</text>
+            <text>{{ productRecommendation }}</text>
           </view>
         </view>
 
@@ -221,6 +256,24 @@
         </view>
 
         <view v-if="step === 7" class="step-panel">
+          <view class="income-preview">
+            <view class="income-top">
+              <text class="income-label">预计总收入</text>
+              <text class="income-date">{{ incomeProjection.target_month }}</text>
+            </view>
+            <text class="income-amount">¥{{ formatMoney(incomeProjection.total_income) }}</text>
+            <text class="income-copy">
+              按当前计划连续定投 {{ incomeProjection.projection_years }} 年后的预计总金额
+            </text>
+            <view class="income-facts">
+              <text>目标总金额 ¥{{ formatMoney(incomeProjection.target_total_income) }}</text>
+              <text>累计计划投入 ¥{{ formatMoney(incomeProjection.total_planned_principal) }}</text>
+              <text>预计收益 ¥{{ formatMoney(incomeProjection.total_return) }}</text>
+              <text>目标差距 ¥{{ formatMoney(incomeProjection.target_gap) }}</text>
+              <text>按年化 {{ formatPercent(incomeProjection.annual_return_rate) }} 复利测算</text>
+            </view>
+          </view>
+
           <view class="summary-list">
             <view v-for="row in summaryRows" :key="row.label" class="summary-row">
               <text class="summary-label">{{ row.label }}</text>
@@ -254,11 +307,15 @@ import OptionCard from "../../components/OptionCard/OptionCard.vue";
 import ActionBar from "../../components/ActionBar/ActionBar.vue";
 import { track } from "../../domain/analytics";
 import {
+  calculateExpectedIncomeProjection,
+  calculateProductMonthlyInvestment,
   getBudgetRisk,
   getGoalHint,
   goalLabels,
+  normalizeProjectionYears,
   goalOptions,
   productOptions,
+  riskLabels,
   termLabels,
   termOptions,
   validateWizardStep,
@@ -290,10 +347,11 @@ const steps = [
 ];
 
 const productTabs: Array<{ value: ProductType | "all"; label: string }> = [
-  { value: "broad_index", label: "宽基" },
+  { value: "broad_index", label: "A股" },
+  { value: "us_index", label: "美股" },
+  { value: "global_index", label: "全球" },
   { value: "factor_index", label: "策略" },
   { value: "industry_index", label: "行业" },
-  { value: "portfolio", label: "组合" },
   { value: "all", label: "全部" },
 ];
 
@@ -324,8 +382,22 @@ const current = computed(() => steps[step.value]);
 const budgetRisk = computed(() => getBudgetRisk(draft.value));
 const goalHint = computed(() => getGoalHint(draft.value.goal_type, draft.value.goal_term));
 const filteredProducts = computed(() => productFilter.value === "all" ? productOptions : productOptions.filter((item) => item.type === productFilter.value));
+const incomeProjection = computed(() => calculateExpectedIncomeProjection(draft.value));
+const productRecommendation = computed(() => {
+  const candidates = productOptions
+    .map((product) => ({ product, plan: calculateProductMonthlyInvestment(product, draft.value.target_total_income, draft.value.projection_years) }))
+    .filter((item) => item.plan.monthly_amount !== null)
+    .sort((a, b) => (a.plan.monthly_amount || 0) - (b.plan.monthly_amount || 0));
+  const best = candidates[0];
+  if (!best || best.plan.monthly_amount === null) return "历史收益率数据不足，建议先选择宽基指数并保守设置目标。";
+  const currentBudgetMatch = best.plan.monthly_amount <= draft.value.monthly_budget;
+  return currentBudgetMatch
+    ? `按历史年化参考，${best.product.name} 约每月 ¥${formatMoney(best.plan.monthly_amount)} 可达目标；仍需注意高收益通常伴随高波动。`
+    : `按历史年化参考，最低也需约每月 ¥${formatMoney(best.plan.monthly_amount)}；若超出预算，可延长年限或降低目标。`;
+});
 const summaryRows = computed(() => [
   { label: "目标", value: `${goalLabels[draft.value.goal_type]} · ${termLabels[draft.value.goal_term]}` },
+  { label: "测算", value: `${draft.value.projection_years} 年后 ¥${formatMoney(draft.value.target_total_income)}` },
   { label: "预算", value: `每月 ¥${draft.value.monthly_budget}` },
   { label: "品种", value: draft.value.investment_products.map((item) => item.name).join("、") || "未选择" },
   { label: "买入", value: `低估 ${draft.value.buy_rule.low_multiplier} 倍，正常 1 倍，高估${draft.value.buy_rule.high_action === "pause" ? "暂停" : "0.5 倍"}` },
@@ -368,6 +440,14 @@ function selectTerm(value: GoalTerm): void {
 
 function updateGoalDesc(event: Event): void {
   store.patchDraft({ goal_desc: getInputValue(event) });
+}
+
+function updateProjectionYears(event: Event): void {
+  store.patchDraft({ projection_years: normalizeProjectionYears(toNumber(getInputValue(event), 30)) });
+}
+
+function updateTargetTotalIncome(event: Event): void {
+  store.patchDraft({ target_total_income: Math.max(0, toNumber(getInputValue(event), 10000000)) });
 }
 
 function updateMonthlyBudget(event: Event): void {
@@ -504,6 +584,24 @@ function toNumber(value: string, fallback = 0): number {
   return Number.isFinite(parsed) ? parsed : fallback;
 }
 
+function formatMoney(value: number): string {
+  return Math.round(value).toLocaleString("zh-CN");
+}
+
+function formatPercent(value: number): string {
+  return `${Math.round(value * 100)}%`;
+}
+
+function formatReturn(value: number | null): string {
+  return value === null ? "--" : `${value.toFixed(1)}%`;
+}
+
+function getRequiredMonthlyText(product: ProductChoice): string {
+  const result = calculateProductMonthlyInvestment(product, draft.value.target_total_income, draft.value.projection_years);
+  if (result.monthly_amount === null || result.horizon === null) return "数据不足";
+  return `约 ¥${formatMoney(result.monthly_amount)}/月 · 按近${result.horizon}年`;
+}
+
 function getSwitchValue(event: Event): boolean {
   return Boolean((event as UniSwitchEvent).detail?.value);
 }
@@ -523,6 +621,120 @@ function getSwitchValue(event: Event): boolean {
 .option-grid {
   display: grid;
   gap: 18rpx;
+}
+
+.index-card {
+  display: grid;
+  gap: 16rpx;
+  padding: 24rpx;
+  border: 1rpx solid #d8d8cf;
+  border-radius: 16rpx;
+  background: #fffdf8;
+}
+
+.index-card.active {
+  border-color: #2f7d52;
+  background: #ecf4eb;
+}
+
+.index-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.index-title-block {
+  min-width: 0;
+  flex: 1;
+}
+
+.index-name {
+  display: block;
+  color: #1d2e25;
+  font-size: 29rpx;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.index-meta,
+.index-reason,
+.index-note {
+  display: block;
+  color: #6c746b;
+  font-size: 23rpx;
+  line-height: 1.35;
+}
+
+.index-meta {
+  margin-top: 8rpx;
+}
+
+.index-note {
+  color: #8a6222;
+}
+
+.index-mark {
+  display: flex;
+  width: 40rpx;
+  height: 40rpx;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #c9d1c7;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #2f7d52;
+  font-size: 24rpx;
+  font-weight: 900;
+}
+
+.return-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10rpx;
+}
+
+.return-cell {
+  min-height: 72rpx;
+  padding: 12rpx 10rpx;
+  border-radius: 12rpx;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.return-cell text:first-child {
+  display: block;
+  color: #6c746b;
+  font-size: 20rpx;
+  font-weight: 800;
+}
+
+.return-cell text:last-child {
+  display: block;
+  margin-top: 8rpx;
+  color: #203028;
+  font-size: 26rpx;
+  font-weight: 950;
+}
+
+.target-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18rpx;
+  padding: 18rpx;
+  border-radius: 12rpx;
+  background: #f7f7f0;
+  color: #52715e;
+  font-size: 22rpx;
+  line-height: 1.35;
+}
+
+.target-row text:last-child {
+  color: #2f7d52;
+  font-size: 25rpx;
+  font-weight: 950;
+  text-align: right;
 }
 
 .segmented,
@@ -671,5 +883,56 @@ function getSwitchValue(event: Event): boolean {
   color: #8a6222;
   font-size: 23rpx;
   line-height: 1.55;
+}
+
+.income-preview {
+  padding: 28rpx;
+  border: 1rpx solid #bdd2cc;
+  border-radius: 16rpx;
+  background: #eef6f2;
+}
+
+.income-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.income-label,
+.income-date {
+  color: #52715e;
+  font-size: 23rpx;
+  font-weight: 850;
+}
+
+.income-date {
+  text-align: right;
+}
+
+.income-amount {
+  display: block;
+  margin-top: 14rpx;
+  color: #203028;
+  font-size: 52rpx;
+  font-weight: 950;
+  line-height: 1.1;
+}
+
+.income-copy {
+  display: block;
+  margin-top: 12rpx;
+  color: #24513a;
+  font-size: 25rpx;
+  line-height: 1.45;
+}
+
+.income-facts {
+  display: grid;
+  gap: 8rpx;
+  margin-top: 18rpx;
+  color: #6c746b;
+  font-size: 23rpx;
+  line-height: 1.35;
 }
 </style>

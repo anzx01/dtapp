@@ -11,6 +11,45 @@
         <text class="hero-reason">{{ suggested.reason }}</text>
       </view>
 
+      <view v-if="incomeProjection" class="income-card surface">
+        <view class="income-title-row">
+          <view class="income-heading">
+            <text class="income-kicker">坚持到 {{ incomeProjection.target_month }}</text>
+            <text class="income-title">预计总收入</text>
+          </view>
+          <text class="income-pill">{{ incomeProjection.projection_years }} 年测算</text>
+        </view>
+        <text class="income-main">¥{{ formatMoney(incomeProjection.total_income) }}</text>
+        <text class="income-sub">
+          按当前计划连续定投后的预计总金额
+        </text>
+        <view class="income-stats">
+          <view class="income-stat">
+            <text>目标总金额</text>
+            <text>¥{{ formatMoney(incomeProjection.target_total_income) }}</text>
+          </view>
+          <view class="income-stat">
+            <text>累计计划投入</text>
+            <text>¥{{ formatMoney(incomeProjection.total_planned_principal) }}</text>
+          </view>
+          <view class="income-stat">
+            <text>预计收益</text>
+            <text>¥{{ formatMoney(incomeProjection.total_return) }}</text>
+          </view>
+          <view class="income-stat">
+            <text>已记录净投入</text>
+            <text>¥{{ formatMoney(incomeProjection.current_principal) }}</text>
+          </view>
+          <view class="income-stat">
+            <text>目标差距</text>
+            <text>¥{{ formatMoney(incomeProjection.target_gap) }}</text>
+          </view>
+        </view>
+        <text class="income-note">
+          按年化 {{ formatPercent(incomeProjection.annual_return_rate) }} 复利测算；测算年限可在修改计划中调整，不代表未来实际收益。
+        </text>
+      </view>
+
       <view class="quick-grid">
         <view class="metric surface">
           <text class="metric-label">目标</text>
@@ -25,9 +64,25 @@
           <text class="metric-value small">{{ plan.next_execution_at }}</text>
         </view>
         <view class="metric surface">
-          <text class="metric-label">记录数</text>
-          <text class="metric-value">{{ store.records.length }}</text>
+          <text class="metric-label">连续执行</text>
+          <text class="metric-value">{{ executionStats?.streak_count || 0 }} 次</text>
         </view>
+        <view class="metric surface">
+          <text class="metric-label">本月完成</text>
+          <text class="metric-value">{{ executionStats?.month_completion_rate || 0 }}%</text>
+        </view>
+        <view class="metric surface">
+          <text class="metric-label">本月投入</text>
+          <text class="metric-value">¥{{ formatMoney(executionStats?.monthly_recorded_amount || 0) }}</text>
+        </view>
+      </view>
+
+      <view v-if="reviewInsight" class="section surface insight-section" :class="reviewInsight.tone">
+        <view class="section-head">
+          <text class="section-title">本月复盘摘要</text>
+          <text class="section-sub">{{ executionStats?.current_month_records || 0 }} 次记录</text>
+        </view>
+        <text class="record-line">{{ reviewInsight.title }} · {{ reviewInsight.detail }}</text>
       </view>
 
       <view class="section surface">
@@ -107,6 +162,9 @@ import { computed } from "vue";
 import { onShow } from "@dcloudio/uni-app";
 import { track } from "../../domain/analytics";
 import {
+  calculateExpectedIncomeProjection,
+  getExecutionStats,
+  getReviewInsight,
   getSuggestedAction,
   goalLabels,
   statusLabels,
@@ -133,6 +191,9 @@ const sellLabels: Record<SellStrategy, string> = {
 
 const plan = computed(() => store.plan);
 const suggested = computed(() => plan.value ? getSuggestedAction(plan.value) : { label: "", amount: 0, tone: "hold" as const, reason: "" });
+const incomeProjection = computed(() => plan.value ? calculateExpectedIncomeProjection(plan.value, store.records) : null);
+const executionStats = computed(() => plan.value ? getExecutionStats(plan.value, store.records) : null);
+const reviewInsight = computed(() => plan.value ? getReviewInsight(plan.value, store.records, store.reviews) : null);
 const sellStrategyLabel = computed(() => plan.value ? sellLabels[plan.value.sell_rule.strategy] : "");
 
 onShow(() => {
@@ -176,6 +237,14 @@ function toggleStatus(): void {
   const next = plan.value.status === "paused" ? "active" : "paused";
   store.setPlanStatus(next);
   if (next === "paused") track("pause_plan");
+}
+
+function formatMoney(value: number): string {
+  return Math.round(value).toLocaleString("zh-CN");
+}
+
+function formatPercent(value: number): string {
+  return `${Math.round(value * 100)}%`;
 }
 </script>
 
@@ -263,6 +332,14 @@ function toggleStatus(): void {
 .section {
   margin-top: 22rpx;
   padding: 26rpx;
+}
+
+.insight-section.warn {
+  background: #fff5df;
+}
+
+.insight-section.ok {
+  background: #ecf4eb;
 }
 
 .section-head {
@@ -353,5 +430,99 @@ function toggleStatus(): void {
   color: #203028;
   font-size: 36rpx;
   font-weight: 900;
+}
+
+.income-card {
+  margin-top: 24rpx;
+  padding: 28rpx;
+  border-color: #bdd2cc;
+  background: #fffdf8;
+}
+
+.income-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.income-heading {
+  min-width: 0;
+  flex: 1;
+}
+
+.income-kicker {
+  display: block;
+  color: #52715e;
+  font-size: 23rpx;
+  font-weight: 850;
+}
+
+.income-title {
+  display: block;
+  margin-top: 8rpx;
+  color: #203028;
+  font-size: 30rpx;
+  font-weight: 950;
+}
+
+.income-pill {
+  max-width: 230rpx;
+  padding: 10rpx 14rpx;
+  border-radius: 999rpx;
+  background: #eef6f2;
+  color: #24513a;
+  font-size: 21rpx;
+  font-weight: 850;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.income-main {
+  display: block;
+  margin-top: 18rpx;
+  color: #2f7d52;
+  font-size: 58rpx;
+  font-weight: 950;
+  line-height: 1.08;
+}
+
+.income-sub {
+  display: block;
+  margin-top: 12rpx;
+  color: #52715e;
+  font-size: 25rpx;
+  line-height: 1.45;
+}
+
+.income-stats {
+  display: grid;
+  gap: 12rpx;
+  margin-top: 22rpx;
+}
+
+.income-stat {
+  display: flex;
+  justify-content: space-between;
+  gap: 18rpx;
+  color: #6c746b;
+  font-size: 23rpx;
+  line-height: 1.35;
+}
+
+.income-stat text:last-child {
+  color: #203028;
+  font-weight: 850;
+  text-align: right;
+}
+
+.income-note {
+  display: block;
+  margin-top: 20rpx;
+  padding-top: 18rpx;
+  border-top: 1rpx solid #e1e7df;
+  color: #8a6222;
+  font-size: 22rpx;
+  line-height: 1.5;
 }
 </style>

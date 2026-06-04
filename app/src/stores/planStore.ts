@@ -2,10 +2,12 @@ import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import {
   applyGoalDefaults,
+  calculateNextExecutionAt,
   createDefaultDraft,
   createPlanFromDraft,
   createRecord,
   createReview,
+  normalizeProjectionYears,
   type DcaPlan,
   type DcaPlanDraft,
   type DcaRecord,
@@ -31,8 +33,9 @@ export const usePlanStore = defineStore("plan", () => {
 
   function hydrate(): void {
     if (hydrated.value) return;
-    draft.value = readStorage(DRAFT_KEY, createDefaultDraft());
-    plan.value = readStorage<DcaPlan | null>(PLAN_KEY, null);
+    draft.value = normalizeDraft(readStorage(DRAFT_KEY, createDefaultDraft()));
+    const storedPlan = readStorage<DcaPlan | null>(PLAN_KEY, null);
+    plan.value = storedPlan ? normalizePlan(storedPlan) : null;
     records.value = readStorage<DcaRecord[]>(RECORDS_KEY, []);
     reviews.value = readStorage<ReviewRecord[]>(REVIEWS_KEY, []);
     hydrated.value = true;
@@ -85,6 +88,17 @@ export const usePlanStore = defineStore("plan", () => {
     const record = createRecord(plan.value, input);
     records.value = [record, ...records.value];
     writeStorage(RECORDS_KEY, records.value);
+    plan.value = {
+      ...plan.value,
+      next_execution_at: calculateNextExecutionAt(
+        plan.value.frequency,
+        plan.value.execution_date,
+        plan.value.custom_execution_day,
+        new Date(`${record.date}T00:00:00`),
+      ),
+      updated_at: new Date().toISOString(),
+    };
+    writeStorage(PLAN_KEY, plan.value);
     return record;
   }
 
@@ -138,6 +152,8 @@ function planToDraft(plan: DcaPlan): DcaPlanDraft {
     goal_type,
     goal_desc,
     goal_term,
+    projection_years,
+    target_total_income,
     monthly_budget,
     disposable_surplus,
     has_emergency_reserve,
@@ -156,6 +172,8 @@ function planToDraft(plan: DcaPlan): DcaPlanDraft {
     goal_type,
     goal_desc,
     goal_term,
+    projection_years: normalizeProjectionYears(projection_years),
+    target_total_income,
     monthly_budget,
     disposable_surplus,
     has_emergency_reserve,
@@ -169,6 +187,22 @@ function planToDraft(plan: DcaPlan): DcaPlanDraft {
     reminder_settings,
     record_fields,
     valuation_state,
+  };
+}
+
+function normalizeDraft(draft: DcaPlanDraft): DcaPlanDraft {
+  return {
+    ...createDefaultDraft(),
+    ...draft,
+    projection_years: normalizeProjectionYears(draft.projection_years),
+  };
+}
+
+function normalizePlan(plan: DcaPlan): DcaPlan {
+  return {
+    ...createDefaultDraft(),
+    ...plan,
+    projection_years: normalizeProjectionYears(plan.projection_years),
   };
 }
 

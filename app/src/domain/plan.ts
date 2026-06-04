@@ -1,6 +1,6 @@
 export type GoalType = "long_term_growth" | "retirement" | "education" | "financial_freedom" | "other";
 export type GoalTerm = "under_3_years" | "three_to_five_years" | "over_5_years" | "undecided";
-export type ProductType = "broad_index" | "factor_index" | "industry_index" | "portfolio";
+export type ProductType = "broad_index" | "us_index" | "global_index" | "factor_index" | "industry_index" | "portfolio";
 export type BuyMethod = "fixed_amount" | "variable_amount" | "valuation_dca" | "custom";
 export type Frequency = "weekly" | "monthly";
 export type ExecutionDate = "salary_next_trading_day" | "custom_date";
@@ -15,6 +15,17 @@ export interface ProductChoice {
   name: string;
   type: ProductType;
   reason: string;
+  code: string;
+  market: string;
+  risk_level: "low" | "medium" | "high";
+  annualized_returns: HistoricalReturns;
+  return_note: string;
+}
+
+export interface HistoricalReturns {
+  y10: number | null;
+  y20: number | null;
+  y30: number | null;
 }
 
 export interface BuyRule {
@@ -52,6 +63,8 @@ export interface DcaPlanDraft {
   goal_type: GoalType;
   goal_desc: string;
   goal_term: GoalTerm;
+  projection_years: number;
+  target_total_income: number;
   monthly_budget: number;
   disposable_surplus: number;
   has_emergency_reserve: boolean;
@@ -108,6 +121,56 @@ export interface SuggestedAction {
   reason: string;
 }
 
+export interface ExpectedIncomeProjection {
+  projection_years: number;
+  target_month: string;
+  annual_return_rate: number;
+  target_total_income: number;
+  target_gap: number;
+  monthly_contribution: number;
+  current_principal: number;
+  total_planned_principal: number;
+  total_projected_assets: number;
+  total_income: number;
+  total_return: number;
+}
+
+export interface ExecutionStats {
+  total_records: number;
+  current_month_records: number;
+  current_month_required: number;
+  month_completion_rate: number;
+  monthly_recorded_amount: number;
+  streak_count: number;
+  last_record_date: string;
+}
+
+export interface TodayTask {
+  status: "due" | "upcoming" | "recorded" | "paused";
+  title: string;
+  label: string;
+  detail: string;
+  amount: number;
+  tone: SuggestedAction["tone"];
+  next_execution_at: string;
+}
+
+export interface ReviewInsight {
+  title: string;
+  detail: string;
+  tone: "ok" | "warn" | "neutral";
+}
+
+export const expectedIncomeAssumptions = {
+  annual_return_rate: 0.1,
+};
+
+export const riskLabels: Record<ProductChoice["risk_level"], string> = {
+  low: "低波动",
+  medium: "中波动",
+  high: "高波动",
+};
+
 export const goalOptions: Array<{ value: GoalType; label: string; desc: string }> = [
   { value: "long_term_growth", label: "长期增值", desc: "适合 5 年以上规划" },
   { value: "retirement", label: "养老准备", desc: "偏稳健与现金流" },
@@ -124,10 +187,138 @@ export const termOptions: Array<{ value: GoalTerm; label: string }> = [
 ];
 
 export const productOptions: ProductChoice[] = [
-  { id: "csi300", name: "沪深300指数", type: "broad_index", reason: "覆盖主流大盘资产，适合新手长期定投。" },
-  { id: "csi500", name: "中证500指数", type: "broad_index", reason: "可作为宽基补充，分散单一大盘暴露。" },
-  { id: "dividend_low_vol", name: "红利低波指数", type: "factor_index", reason: "更偏现金流和稳健风格。" },
-  { id: "consumer", name: "消费行业指数", type: "industry_index", reason: "行业波动更高，建议作为进阶配置。" },
+  {
+    id: "csi300",
+    name: "沪深300指数",
+    type: "broad_index",
+    code: "000300",
+    market: "A股",
+    risk_level: "medium",
+    annualized_returns: { y10: 4.2, y20: 7.0, y30: null },
+    reason: "覆盖主流大盘资产，适合新手长期定投。",
+    return_note: "指数历史不足 30 年，30 年口径暂不展示。",
+  },
+  {
+    id: "csi500",
+    name: "中证500指数",
+    type: "broad_index",
+    code: "000905",
+    market: "A股",
+    risk_level: "high",
+    annualized_returns: { y10: 3.6, y20: null, y30: null },
+    reason: "可作为宽基补充，分散单一大盘暴露。",
+    return_note: "指数历史不足 20/30 年，长期口径暂不展示。",
+  },
+  {
+    id: "sse50",
+    name: "上证50指数",
+    type: "broad_index",
+    code: "000016",
+    market: "A股",
+    risk_level: "medium",
+    annualized_returns: { y10: 3.8, y20: 6.2, y30: null },
+    reason: "偏大盘蓝筹，波动通常低于成长风格。",
+    return_note: "指数历史不足 30 年，30 年口径暂不展示。",
+  },
+  {
+    id: "sp500",
+    name: "标普500指数",
+    type: "us_index",
+    code: "S&P 500",
+    market: "美股",
+    risk_level: "medium",
+    annualized_returns: { y10: 12.4, y20: 9.9, y30: 9.8 },
+    reason: "覆盖美国大盘核心资产，适合做海外宽基配置。",
+    return_note: "美元计价历史年化参考，未考虑汇率和交易成本。",
+  },
+  {
+    id: "nasdaq100",
+    name: "纳斯达克100指数",
+    type: "us_index",
+    code: "NDX",
+    market: "美股",
+    risk_level: "high",
+    annualized_returns: { y10: 17.8, y20: 14.2, y30: 13.1 },
+    reason: "科技权重高，长期收益弹性大，但回撤也更深。",
+    return_note: "美元计价历史年化参考，行业集中度较高。",
+  },
+  {
+    id: "nasdaq_composite",
+    name: "纳斯达克综合指数",
+    type: "us_index",
+    code: "IXIC",
+    market: "美股",
+    risk_level: "high",
+    annualized_returns: { y10: 14.7, y20: 11.8, y30: 10.6 },
+    reason: "覆盖纳斯达克市场整体，成长风格更明显。",
+    return_note: "美元计价历史年化参考，波动高于普通宽基。",
+  },
+  {
+    id: "dow_jones",
+    name: "道琼斯工业指数",
+    type: "us_index",
+    code: "DJIA",
+    market: "美股",
+    risk_level: "medium",
+    annualized_returns: { y10: 10.4, y20: 8.6, y30: 8.7 },
+    reason: "偏成熟蓝筹，适合作为美股大盘补充观察。",
+    return_note: "美元计价历史年化参考。",
+  },
+  {
+    id: "msci_world",
+    name: "MSCI全球指数",
+    type: "global_index",
+    code: "MSCI World",
+    market: "全球",
+    risk_level: "medium",
+    annualized_returns: { y10: 9.1, y20: 7.4, y30: 7.2 },
+    reason: "覆盖发达市场股票，适合做全球分散配置参考。",
+    return_note: "美元计价历史年化参考，未考虑汇率。",
+  },
+  {
+    id: "hang_seng",
+    name: "恒生指数",
+    type: "global_index",
+    code: "HSI",
+    market: "港股",
+    risk_level: "high",
+    annualized_returns: { y10: -1.8, y20: 3.4, y30: 4.8 },
+    reason: "港股代表性指数，估值波动大，适合进阶观察。",
+    return_note: "港币计价历史年化参考，近十年表现较弱。",
+  },
+  {
+    id: "nikkei225",
+    name: "日经225指数",
+    type: "global_index",
+    code: "Nikkei 225",
+    market: "日本",
+    risk_level: "medium",
+    annualized_returns: { y10: 8.7, y20: 7.3, y30: 4.6 },
+    reason: "日本大盘代表指数，可用于海外分散观察。",
+    return_note: "日元计价历史年化参考，未考虑汇率。",
+  },
+  {
+    id: "dividend_low_vol",
+    name: "红利低波指数",
+    type: "factor_index",
+    code: "红利低波",
+    market: "A股",
+    risk_level: "medium",
+    annualized_returns: { y10: 7.6, y20: null, y30: null },
+    reason: "更偏现金流和稳健风格。",
+    return_note: "策略指数长期口径不足，需后续接指数官方数据。",
+  },
+  {
+    id: "consumer",
+    name: "消费行业指数",
+    type: "industry_index",
+    code: "消费",
+    market: "A股",
+    risk_level: "high",
+    annualized_returns: { y10: 5.2, y20: null, y30: null },
+    reason: "行业波动更高，建议作为进阶配置。",
+    return_note: "行业指数长期口径不足，需后续接指数官方数据。",
+  },
 ];
 
 export const goalLabels: Record<GoalType, string> = {
@@ -165,6 +356,8 @@ export function createDefaultDraft(): DcaPlanDraft {
     goal_type: "long_term_growth",
     goal_desc: "",
     goal_term: "over_5_years",
+    projection_years: 30,
+    target_total_income: 10000000,
     monthly_budget: 3000,
     disposable_surplus: 8000,
     has_emergency_reserve: true,
@@ -292,6 +485,188 @@ export function getSuggestedAction(plan: DcaPlan): SuggestedAction {
   };
 }
 
+export function calculateExpectedIncomeProjection(plan: DcaPlanDraft | DcaPlan, records: DcaRecord[] = [], from = new Date()): ExpectedIncomeProjection {
+  const projectionYears = normalizeProjectionYears(plan.projection_years);
+  const months = projectionYears * 12;
+  const monthlyContribution = Math.max(0, plan.monthly_budget);
+  const currentPrincipal = getCurrentPrincipal(plan, records);
+  const monthlyRate = Math.pow(1 + expectedIncomeAssumptions.annual_return_rate, 1 / 12) - 1;
+  const growthFactor = Math.pow(1 + monthlyRate, months);
+  const contributionFactor = monthlyRate === 0 ? months : (growthFactor - 1) / monthlyRate;
+  const totalProjectedAssets = currentPrincipal * growthFactor + monthlyContribution * contributionFactor;
+  const totalPlannedPrincipal = currentPrincipal + monthlyContribution * months;
+  const totalIncome = totalProjectedAssets;
+  const totalReturn = Math.max(0, totalProjectedAssets - totalPlannedPrincipal);
+
+  return {
+    projection_years: projectionYears,
+    target_month: formatYearMonth(addMonths(from, months)),
+    annual_return_rate: expectedIncomeAssumptions.annual_return_rate,
+    target_total_income: Math.round(Math.max(0, plan.target_total_income)),
+    target_gap: Math.round(Math.max(0, plan.target_total_income - totalIncome)),
+    monthly_contribution: Math.round(monthlyContribution),
+    current_principal: Math.round(currentPrincipal),
+    total_planned_principal: Math.round(totalPlannedPrincipal),
+    total_projected_assets: Math.round(totalProjectedAssets),
+    total_income: Math.round(totalIncome),
+    total_return: Math.round(totalReturn),
+  };
+}
+
+export function getAnnualizedReturnForYears(product: ProductChoice, years: number): {
+  rate: number | null;
+  horizon: 10 | 20 | 30 | null;
+} {
+  const normalizedYears = normalizeProjectionYears(years);
+  if (normalizedYears <= 10 && product.annualized_returns.y10 !== null) return { rate: product.annualized_returns.y10 / 100, horizon: 10 };
+  if (normalizedYears <= 20 && product.annualized_returns.y20 !== null) return { rate: product.annualized_returns.y20 / 100, horizon: 20 };
+  if (product.annualized_returns.y30 !== null) return { rate: product.annualized_returns.y30 / 100, horizon: 30 };
+  if (product.annualized_returns.y20 !== null) return { rate: product.annualized_returns.y20 / 100, horizon: 20 };
+  if (product.annualized_returns.y10 !== null) return { rate: product.annualized_returns.y10 / 100, horizon: 10 };
+  return { rate: null, horizon: null };
+}
+
+export function calculateRequiredMonthlyInvestment(targetAmount: number, years: number, annualReturnRate: number, currentPrincipal = 0): number {
+  const normalizedYears = normalizeProjectionYears(years);
+  const months = normalizedYears * 12;
+  const target = Math.max(0, targetAmount);
+  const principal = Math.max(0, currentPrincipal);
+  const monthlyRate = Math.pow(1 + Math.max(-0.95, annualReturnRate), 1 / 12) - 1;
+  const principalFutureValue = principal * Math.pow(1 + monthlyRate, months);
+  const gap = target - principalFutureValue;
+  if (gap <= 0) return 0;
+  if (monthlyRate === 0) return Math.round(gap / months);
+  const contributionFactor = (Math.pow(1 + monthlyRate, months) - 1) / monthlyRate;
+  return Math.round(gap / contributionFactor);
+}
+
+export function calculateProductMonthlyInvestment(product: ProductChoice, targetAmount: number, years: number, currentPrincipal = 0): {
+  monthly_amount: number | null;
+  annual_return_rate: number | null;
+  horizon: 10 | 20 | 30 | null;
+} {
+  const selectedReturn = getAnnualizedReturnForYears(product, years);
+  if (selectedReturn.rate === null) {
+    return { monthly_amount: null, annual_return_rate: null, horizon: null };
+  }
+
+  return {
+    monthly_amount: calculateRequiredMonthlyInvestment(targetAmount, years, selectedReturn.rate, currentPrincipal),
+    annual_return_rate: selectedReturn.rate,
+    horizon: selectedReturn.horizon,
+  };
+}
+
+export function getExecutionStats(plan: DcaPlan, records: DcaRecord[] = [], from = new Date()): ExecutionStats {
+  const planRecords = getPlanRecords(plan, records);
+  const currentMonth = `${from.getFullYear()}-${pad(from.getMonth() + 1)}`;
+  const currentMonthRecords = planRecords.filter((record) => record.date.startsWith(currentMonth));
+  const currentMonthRequired = getRequiredExecutionsSoFar(plan, from);
+  const currentMonthCompleted = currentMonthRecords.filter((record) => record.execution_status === "completed").length;
+  const monthlyRecordedAmount = currentMonthRecords.reduce((total, record) => total + (record.action_type === "sell" ? -record.amount : record.amount), 0);
+
+  return {
+    total_records: planRecords.length,
+    current_month_records: currentMonthRecords.length,
+    current_month_required: currentMonthRequired,
+    month_completion_rate: Math.min(100, Math.round((currentMonthCompleted / currentMonthRequired) * 100)),
+    monthly_recorded_amount: Math.max(0, monthlyRecordedAmount),
+    streak_count: getExecutionStreak(plan, planRecords),
+    last_record_date: planRecords[0]?.date || "",
+  };
+}
+
+export function getTodayTask(plan: DcaPlan, records: DcaRecord[] = [], from = new Date()): TodayTask {
+  const suggested = getSuggestedAction(plan);
+  const todayText = formatDate(from);
+  const nextExecutionDate = parseDateTime(plan.next_execution_at);
+  const nextDateText = nextExecutionDate ? formatDate(nextExecutionDate) : "";
+  const recordedToday = getPlanRecords(plan, records).some((record) => record.date === todayText && record.execution_status === "completed");
+
+  if (plan.status === "paused") {
+    return {
+      status: "paused",
+      title: "计划暂停中",
+      label: "暂无动作",
+      detail: "恢复计划后，再按规则继续执行。",
+      amount: 0,
+      tone: "hold",
+      next_execution_at: plan.next_execution_at,
+    };
+  }
+
+  if (recordedToday) {
+    return {
+      status: "recorded",
+      title: "今天已记录",
+      label: "保持节奏",
+      detail: "本次执行已计入计划，下一步等到下个执行日。",
+      amount: 0,
+      tone: "hold",
+      next_execution_at: plan.next_execution_at,
+    };
+  }
+
+  if (!nextExecutionDate || nextDateText <= todayText) {
+    return {
+      status: "due",
+      title: "今天该执行",
+      label: suggested.label,
+      detail: suggested.reason,
+      amount: suggested.amount,
+      tone: suggested.tone,
+      next_execution_at: plan.next_execution_at,
+    };
+  }
+
+  return {
+    status: "upcoming",
+    title: "下次执行",
+    label: suggested.label,
+    detail: `${plan.next_execution_at} 按计划查看是否执行。`,
+    amount: suggested.amount,
+    tone: suggested.tone,
+    next_execution_at: plan.next_execution_at,
+  };
+}
+
+export function getReviewInsight(plan: DcaPlan, records: DcaRecord[] = [], reviews: ReviewRecord[] = [], from = new Date()): ReviewInsight {
+  const stats = getExecutionStats(plan, records, from);
+  const currentMonth = `${from.getFullYear()}-${pad(from.getMonth() + 1)}`;
+  const latestReview = reviews.find((review) => review.plan_id === plan.plan_id);
+  const reviewedThisMonth = latestReview?.created_at.startsWith(currentMonth);
+
+  if (reviewedThisMonth && latestReview) {
+    return {
+      title: "本月已复盘",
+      detail: latestReview.summary,
+      tone: "ok",
+    };
+  }
+
+  if (stats.current_month_records === 0) {
+    return {
+      title: "本月还没有记录",
+      detail: "先完成本期动作，月底复盘才有依据。",
+      tone: "warn",
+    };
+  }
+
+  if (stats.month_completion_rate >= 100) {
+    return {
+      title: "本月执行稳定",
+      detail: `已记录 ${stats.current_month_records} 次，累计投入 ¥${stats.monthly_recorded_amount}。`,
+      tone: "ok",
+    };
+  }
+
+  return {
+    title: "本月继续跟进",
+    detail: `已完成 ${stats.month_completion_rate}%，下次执行时继续按规则记录。`,
+    tone: "neutral",
+  };
+}
+
 export function calculateNextExecutionAt(frequency: Frequency, executionDate: ExecutionDate, customDay = 5, from = new Date()): string {
   const next = new Date(from);
   next.setHours(9, 30, 0, 0);
@@ -361,6 +736,91 @@ function moveWeekendToMonday(date: Date): void {
 
 function formatDateTime(date: Date): string {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+function getCurrentPrincipal(plan: DcaPlanDraft | DcaPlan, records: DcaRecord[]): number {
+  const relevantRecords = "plan_id" in plan ? getPlanRecords(plan, records) : records;
+  const principal = relevantRecords.reduce((total, record) => {
+    return total + (record.action_type === "sell" ? -record.amount : record.amount);
+  }, 0);
+
+  return Math.max(0, principal);
+}
+
+function getPlanRecords(plan: DcaPlan, records: DcaRecord[]): DcaRecord[] {
+  return records
+    .filter((record) => record.plan_id === plan.plan_id)
+    .sort((a, b) => b.date.localeCompare(a.date) || b.created_at.localeCompare(a.created_at));
+}
+
+function getRequiredExecutionsSoFar(plan: DcaPlan, from: Date): number {
+  if (plan.frequency === "monthly") return 1;
+
+  const cursor = new Date(from.getFullYear(), from.getMonth(), 1);
+  let mondays = 0;
+  while (cursor <= from) {
+    if (cursor.getDay() === 1) mondays += 1;
+    cursor.setDate(cursor.getDate() + 1);
+  }
+  return Math.max(1, mondays);
+}
+
+function getExecutionStreak(plan: DcaPlan, records: DcaRecord[]): number {
+  const completedRecords = records.filter((record) => record.execution_status === "completed");
+  if (completedRecords.length === 0) return 0;
+
+  const maxGapDays = plan.frequency === "weekly" ? 10 : 45;
+  let streak = 1;
+  for (let index = 1; index < completedRecords.length; index += 1) {
+    const previous = parseDate(completedRecords[index - 1].date);
+    const current = parseDate(completedRecords[index].date);
+    if (!previous || !current) break;
+    if (daysBetween(current, previous) > maxGapDays) break;
+    streak += 1;
+  }
+
+  return streak;
+}
+
+export function normalizeProjectionYears(value: number | undefined): number {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return 30;
+  return Math.min(Math.max(Math.round(parsed), 1), 60);
+}
+
+function addMonths(date: Date, months: number): Date {
+  const next = new Date(date);
+  next.setMonth(next.getMonth() + months);
+  return next;
+}
+
+function formatYearMonth(date: Date): string {
+  return `${date.getFullYear()}年${date.getMonth() + 1}月`;
+}
+
+function formatDate(date: Date): string {
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
+function parseDate(value: string): Date | null {
+  const [year, month, day] = value.split("-").map(Number);
+  if (!year || !month || !day) return null;
+  return new Date(year, month - 1, day);
+}
+
+function parseDateTime(value: string): Date | null {
+  const [datePart, timePart = "00:00"] = value.split(" ");
+  const [year, month, day] = datePart.split("-").map(Number);
+  const [hour, minute] = timePart.split(":").map(Number);
+  if (!year || !month || !day) return null;
+  return new Date(year, month - 1, day, hour || 0, minute || 0);
+}
+
+function daysBetween(from: Date, to: Date): number {
+  const dayMs = 24 * 60 * 60 * 1000;
+  const fromDate = new Date(from.getFullYear(), from.getMonth(), from.getDate());
+  const toDate = new Date(to.getFullYear(), to.getMonth(), to.getDate());
+  return Math.round((toDate.getTime() - fromDate.getTime()) / dayMs);
 }
 
 function pad(value: number): string {

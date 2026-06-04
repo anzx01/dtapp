@@ -60,7 +60,15 @@ import { onLoad } from "@dcloudio/uni-app";
 import StepHeader from "../../components/StepHeader/StepHeader.vue";
 import ActionBar from "../../components/ActionBar/ActionBar.vue";
 import { track } from "../../domain/analytics";
-import { getSuggestedAction, today, valuationLabels, type ActionType, type ValuationState } from "../../domain/plan";
+import {
+  calculateExpectedIncomeProjection,
+  getExecutionStats,
+  getSuggestedAction,
+  today,
+  valuationLabels,
+  type ActionType,
+  type ValuationState,
+} from "../../domain/plan";
 import { usePlanStore } from "../../stores/planStore";
 
 const store = usePlanStore();
@@ -104,18 +112,28 @@ function save(): void {
   }
 
   const wasFirst = store.records.length === 0;
-  store.saveRecord({
+  const beforeProjection = calculateExpectedIncomeProjection(plan.value, store.records);
+  const record = store.saveRecord({
     date: date.value,
     action_type: actionType.value,
     amount: amount.value,
     valuation_state: valuationState.value,
     note: note.value,
   });
+  if (!record || !store.plan) return;
   if (wasFirst) track("complete_first_execution");
-  uni.showToast({ title: "记录已保存", icon: "success" });
-  setTimeout(() => {
-    uni.redirectTo({ url: "/pages/plan-detail/index" });
-  }, 300);
+  const afterProjection = calculateExpectedIncomeProjection(store.plan, store.records);
+  const stats = getExecutionStats(store.plan, store.records);
+  const delta = afterProjection.total_income - beforeProjection.total_income;
+  uni.showModal({
+    title: "记录已保存",
+    content: `连续执行 ${stats.streak_count} 次\n预计总收入 ${formatSignedMoney(delta)}`,
+    confirmText: "查看详情",
+    showCancel: false,
+    success: () => {
+      uni.redirectTo({ url: "/pages/plan-detail/index" });
+    },
+  });
 }
 
 function back(): void {
@@ -134,6 +152,12 @@ function getInputValue(event: Event): string {
 function toNumber(value: string): number {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function formatSignedMoney(value: number): string {
+  const rounded = Math.round(value);
+  const sign = rounded >= 0 ? "+" : "-";
+  return `${sign}¥${Math.abs(rounded).toLocaleString("zh-CN")}`;
 }
 </script>
 

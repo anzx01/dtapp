@@ -7,7 +7,15 @@
         <view class="stats-row">
           <view class="stat">
             <text class="stat-label">本月记录</text>
-            <text class="stat-value">{{ store.records.length }}</text>
+            <text class="stat-value">{{ executionStats?.current_month_records || 0 }}</text>
+          </view>
+          <view class="stat">
+            <text class="stat-label">本月完成</text>
+            <text class="stat-value">{{ executionStats?.month_completion_rate || 0 }}%</text>
+          </view>
+          <view class="stat">
+            <text class="stat-label">预计总收入</text>
+            <text class="stat-value small">¥{{ formatMoney(incomeProjection?.total_income || 0) }}</text>
           </view>
           <view class="stat">
             <text class="stat-label">计划状态</text>
@@ -83,7 +91,7 @@ import { onLoad } from "@dcloudio/uni-app";
 import StepHeader from "../../components/StepHeader/StepHeader.vue";
 import ActionBar from "../../components/ActionBar/ActionBar.vue";
 import { track } from "../../domain/analytics";
-import type { ReviewRecord } from "../../domain/plan";
+import { calculateExpectedIncomeProjection, getExecutionStats, type ReviewRecord } from "../../domain/plan";
 import { usePlanStore } from "../../stores/planStore";
 
 const store = usePlanStore();
@@ -97,6 +105,8 @@ const sellConditionReached = ref(false);
 const summary = ref("继续当前预算，保持规则执行。");
 
 const plan = computed(() => store.plan);
+const executionStats = computed(() => plan.value ? getExecutionStats(plan.value, store.records) : null);
+const incomeProjection = computed(() => plan.value ? calculateExpectedIncomeProjection(plan.value, store.records) : null);
 const suggestion = computed(() => {
   if (sellConditionReached.value) return "已达到卖出条件时，只按预设规则分批处理，不临时决定。";
   if (missedExecution.value) return "本周期有错过执行，建议检查提醒时间是否合适。";
@@ -121,7 +131,10 @@ onLoad(() => {
   store.hydrate();
   if (!store.plan) {
     uni.redirectTo({ url: "/pages/index/index" });
+    return;
   }
+  const stats = getExecutionStats(store.plan, store.records);
+  summary.value = `本月记录 ${stats.current_month_records} 次，完成率 ${stats.month_completion_rate}%。继续当前预算，保持规则执行。`;
 });
 
 function save(): void {
@@ -156,6 +169,10 @@ function getInputValue(event: Event): string {
 
 function getSwitchValue(event: Event): boolean {
   return Boolean((event as UniSwitchEvent).detail?.value);
+}
+
+function formatMoney(value: number): string {
+  return Math.round(value).toLocaleString("zh-CN");
 }
 </script>
 
